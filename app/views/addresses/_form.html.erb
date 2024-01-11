@@ -1,0 +1,56 @@
+<%= form_with(model: address) do |form| %>
+  <% if address.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+        <% address.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="columns">
+  <div class="column">
+    CEP:<br>
+    <%= form.text_field :zipcode, class: "input is-normal is-primary", maxlength: 9, required: true %>
+  </div>
+  <div class="column">
+    Endereço:<br>
+    <%= form.text_field :street, class: "input is-normal is-primary", required: true %>
+  </div>
+  <div class="column">
+    Complemento:<br>
+    <%= form.text_field :complement, class: "input is-normal is-primary", maxlength: 100 %>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    Bairro:<br>
+    <%= form.text_field :district, class: "input is-normal is-primary", maxlength: 100, required: true %>
+  </div>
+  <div class="column">
+    Cidade:<br>
+    <%= form.text_field :city, class: "input is-normal is-primary", required: true %>
+  </div>
+  <div class="column">
+    UF:<br>
+    <%= form.text_field :state, class: "input is-normal is-primary", maxlength: 100, required: true %>
+  </div>
+  <div class="column">
+    Código do IBGE:<br>
+    <%= form.text_field :ibge_code, class: "input is-normal is-primary" %>
+  </div>
+</div>
+
+  <div>
+    <%= form.label :municipe_id, style: "display: block" %>
+    <%= form.text_field :municipe_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

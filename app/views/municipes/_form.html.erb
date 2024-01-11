@@ -1,0 +1,126 @@
+<%= form_with(model: municipe) do |form| %>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <p class="title">
+      Informações cadastrais
+    </p>
+  </div>
+</section>  
+<section class="hero is-small">
+  <div class="hero-body">
+    <p class="title">
+      <div class="columns">
+       <div class="column">
+        Nome:<br>
+        <%= form.text_field :name, class: "input is-normal is-primary", required: true, maxlength: 200 %>
+       </div>
+       <div class="column">
+          E-mail:<br>
+          <%= form.text_field :email, class: "input is-normal is-primary", required: true, maxlength: 200 %>
+            <% if @municipe.errors[:email].any? %>
+            <p class="help is-danger"><%= @municipe.errors[:email].first %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="columns">
+      <div class="column">
+          CPF:<br>
+          <%= form.text_field :cpf, class: "input is-normal is-primary", maxlength: 11, required: true, pattern: "[0-9]*" %>
+          <% if @municipe.errors[:cpf].any? %>
+            <p class="help is-danger"><%= @municipe.errors[:cpf].first %></p>
+          <% end %>
+        </div>
+        <div class="column">
+          CNS:<br>
+          <%= form.text_field :cns, class: "input is-normal is-primary", maxlength: 15, required: true, pattern: "[0-9]*" %>
+          <% if @municipe.errors[:cns].any? %>
+            <p class="help is-danger"><%= @municipe.errors[:cns].first %></p>
+          <% end %>
+        </div>
+         <div class="column">
+            Data de nascimento:<br>
+            <%= form.date_field :birthday, class: "input is-normal is-primary", required: true  %>
+            <% if @municipe.errors[:birthday].any? %>
+              <p class="help is-danger"><%= @municipe.errors[:birthday].first %></p>
+            <% end %>
+          </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          Código do país:<br>
+          <%= form.select :country_code, options_for_select(ISO3166::Country.all.map { |country| ["#{country.emoji_flag} #{country.iso_short_name}", country.country_code] }, selected: @municipe.new_record? ? '55' : @municipe.country_code), { include_blank: 'Selecione o código do país' }, class: "select is-normal is-primary input", required: true %>
+        </div>
+        <div class="column">
+        DDD+Celular:<br> <%= form.text_field :mobile, style: "width: 150px;", class: "input is-normal is-primary", required: true, maxlength: 11 %>
+        </div>
+        <div class="column">
+          Status: <%= form.check_box :status %> Ativo <br><i>(Se alterado o status envia um SMS ao municipe alertando desta mudança)</i>
+        </div>
+      </div>
+      <%= form.fields_for :address do |address_form| %>
+
+        <div class="columns">
+        <div class="column">
+          CEP:<br>
+          <%= address_form.text_field :zipcode, class: "input is-normal is-primary", maxlength: 9, required: true%>
+          <% if address_form.object.errors[:zipcode].any? %>
+            <p class="help is-danger"><%= address_form.object.errors[:zipcode].first %></p>
+          <% end %>
+        </div>
+        <div class="column">
+          Logradouro:<br>
+          <%= address_form.text_field :street, class: "input is-normal is-primary", required: true %>
+        </div>
+        <div class="column">
+          Complemento:<br>
+          <%= address_form.text_field :complement, class: "input is-normal is-primary", maxlength: 100 %>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          Bairro:<br>
+          <%= address_form.text_field :district, class: "input is-normal is-primary", maxlength: 100, required: true %>
+        </div>
+        <div class="column">
+          UF:<br>
+          <%= address_form.select :state, ISO3166::Country['BR'].subdivisions.values.map { |s| [s.name, s.code] }, { include_blank: 'Selecione o estado' }, class: "select is-normal is-primary input", required: true %>
+        </div>
+        <div class="column">
+          Cidade:<br>
+          <%= address_form.text_field :city, class: "input is-normal is-primary", required: true %>
+        </div>
+        <div class="column">
+          Código do IBGE:<br>
+          <%= address_form.text_field :ibge_code, class: "input is-normal is-primary" %>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="columns">
+        <div class="column">
+          Envie uma foto:<br>
+          <%= form.file_field :photo, class: "input is-normal is-primary" %><br>
+          <br>
+          <strong>Foto:</strong><br>
+            <% if @municipe.photo.attached? %>
+              <%= image_tag @municipe.photo, class: "photo-preview" %>
+              <%= image_tag @municipe.photo.variant(resize_to_limit: [100, 100]), class: "photo-preview, is-rounded" %>
+            <% else %>
+              Sem foto disponível.
+            <% end %>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column  is-half is-flex is-justify-content-center">
+          <%= form.submit "Salvar", class: "button is-success is-medium" %>
+          <br><br>&nbsp;<i><strong class="has-text-warning-dark has-background-light	">Importante: Ao salvar um e-mail é enviado ao municipe com as alterações realizadas.</strong></i>
+        </div>
+        <div class="column is-half is-flex is-justify-content-center">
+          <%= link_to "Voltar", municipes_path, class: "button is-success is-medium" %>
+        </div>
+      </div>
+    </p>
+  </div>
+</section>  
+<% end %>

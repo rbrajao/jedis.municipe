@@ -1,0 +1,120 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <p class="title">
+      Consulta dos municipes
+    </p>
+  </div>
+</section>
+<section class="hero is-small">
+  <div class="hero-body">
+    <p class="title">
+      Se precisar realize o filtro pelos campos abaixo
+    </p>
+       <%= form_tag(municipes_path, method: :get, class: "control") do %>  
+
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <%= label_tag(:name_search, "Nome") %>
+                <%= text_field_tag(:name_search, params[:name_search], class: "input", placeholder: "Digite o nome") %>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <%= label_tag(:cpf, "CPF") %>
+                <%= text_field_tag(:cpf, params[:cpf], class: "input", maxlength: 11, placeholder: "Digite o CPF") %>
+              </div>
+            </div>
+            <div class="column">
+             <div class="field">
+                <%= label_tag(:cns_search, "CNS") %>
+                <%= text_field_tag(:cns_search, params[:cns_search], class: "input", maxlength: 15, placeholder: "Digite o CNS") %>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <%= label_tag(:street_search, "Logradouro") %>
+                <%= text_field_tag(:street_search, params[:street_search], class: "input", placeholder: "Digite o nome") %>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <%= label_tag(:zipcode_search, "CEP") %>
+                <%= text_field_tag(:zipcode_search, params[:zipcode_search], class: "input", maxlength: 11, placeholder: "Digite o CPF") %>
+              </div>
+            </div>
+            <div class="column">
+             <div class="field">
+                <%= label_tag(:city_search, "Cidade") %>
+                <%= text_field_tag(:city_search, params[:city_search], class: "input", maxlength: 15, placeholder: "Digite o CNS") %>
+              </div>
+            </div>
+          </div>
+
+          <%= submit_tag("Buscar", class: "button is-success") %>
+      <% end %>
+  </div>
+</section>
+
+<% if @municipes.count > 0 %>
+
+    <section class="hero is-small">
+      <div class="hero-body">
+        <p class="title">
+          Municipes cadastrados <div style="color: green"><%= notice %></div>
+        </p>
+            <div id="municipes">
+                <table class="table is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Nome completo</th>
+                    <th>Data de nascimento</th>
+                    <th>CPF</th>
+                    <th>CNS</th>
+                    <th>E-mail</th>
+                    <th>Celular</th>
+                    <th>Status</th>
+                    <th>&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @municipes.each do |municipe| %>
+                    <tr>
+                      <td><%= municipe.name %></td>
+                      <td><%= municipe.birthday.strftime('%d/%m/%Y') %></td>
+                      <td><%= municipe.cpf %></td>
+                      <td><%= municipe.cns %></td>
+                      <td><%= municipe.email %></td>
+                      <td><%= municipe.mobile %></td>
+                      <td><%= municipe.status %></td>
+                      <td><%= link_to "Editar", edit_municipe_path(municipe.id) %> </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+          </div>
+      </div>  
+    </div>
+<% else %>
+  <section class="hero is-small">
+    <div class="hero-body">
+      <p class="subtitle">
+         Nenhum cadastro encontrado. Se fez algum filtro, refaça a busca.
+      </p>
+    </div>
+  </section>  
+  <br>
+<br>
+<% end %>
+
+<div class="columns is-centered">
+  <div class="column  is-half is-flex is-justify-content-center">
+    <%= link_to "Novo munícipe", new_municipe_path, class: "button is-success is-medium" %>
+  </div>
+  <div class="column is-half is-flex is-justify-content-center">
+    <%= link_to "Voltar", home_index_path, class: "button is-success is-medium" %>
+  </div>
+</div>
