@@ -1,13 +1,14 @@
 # README
 
 Feito para teste de conhecimento - JEDIS
-Importante:
 
 Versões utilizadas:
+- ruby 3.2.2
+- Rails 7.0.8
+- Postegre@14.10
+- bulma 0.9.4 (padrão de css responsivo)
 
-ruby 3.2.2
-Rails 7.0.8
-Postegre@14
+
 Link de produção para acesso:
 
 Pontos que estou ciente mas não aprofundarei por conta do teste:
@@ -15,10 +16,15 @@ Pontos que estou ciente mas não aprofundarei por conta do teste:
 - Contratação do sendgrid para envio dos emails;
 - Campos de busca na tela de listagem do municipe foram alguns para verificar o teste. Não coloquei todos disponível;
 - Foto quando é feito o upload eu mostro outra com um tamanho diferente, sinalizando que consigo tratar diferentes tamanhos;
+- Quanto aos testes usei o rspec que é o mais conhecido, mas fiz poucos testes, apenas para mostrar que sei mexer;
 
 Automação:
-- Utilizei a Amazon Elastic BeanstalkWS para gerar a aplicação de produção;
-- Uma vez feito um push na MAIN o ambiente de produção é atualizado;
+- Utilizei AWS com EC2 (como teste coloquei o aplicativo e o banco de dados no mesmo server)
+- Para a versão 2 colocar CI/CD com o github labs para uma vez atualizado o github para a main, atualizar o ambiente de produção (comom o Heroku faz);
+
+
+
+
 
 
 Condições impostas do teste:
