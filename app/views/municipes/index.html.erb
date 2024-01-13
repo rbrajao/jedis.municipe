@@ -16,19 +16,19 @@
             <div class="column">
               <div class="field">
                 <%= label_tag(:name_search, "Nome") %>
-                <%= text_field_tag(:name_search, params[:name_search], class: "input", placeholder: "Digite o nome") %>
+                <%= text_field_tag(:name_search, params[:name_search], class: "input", placeholder: "Busque pelo nome") %>
               </div>
             </div>
             <div class="column">
               <div class="field">
                 <%= label_tag(:cpf, "CPF") %>
-                <%= text_field_tag(:cpf, params[:cpf], class: "input", maxlength: 11, placeholder: "Digite o CPF") %>
+                <%= text_field_tag(:cpf, params[:cpf], class: "input", maxlength: 11, placeholder: "Busque pelo CPF") %>
               </div>
             </div>
             <div class="column">
              <div class="field">
                 <%= label_tag(:cns_search, "CNS") %>
-                <%= text_field_tag(:cns_search, params[:cns_search], class: "input", maxlength: 15, placeholder: "Digite o CNS") %>
+                <%= text_field_tag(:cns_search, params[:cns_search], class: "input", maxlength: 15, placeholder: "Busque pela CNS") %>
               </div>
             </div>
           </div>
@@ -37,19 +37,19 @@
             <div class="column">
               <div class="field">
                 <%= label_tag(:street_search, "Logradouro") %>
-                <%= text_field_tag(:street_search, params[:street_search], class: "input", placeholder: "Digite o nome") %>
+                <%= text_field_tag(:street_search, params[:street_search], class: "input", placeholder: "Busque pelo endereço") %>
               </div>
             </div>
             <div class="column">
               <div class="field">
                 <%= label_tag(:zipcode_search, "CEP") %>
-                <%= text_field_tag(:zipcode_search, params[:zipcode_search], class: "input", maxlength: 11, placeholder: "Digite o CPF") %>
+                <%= text_field_tag(:zipcode_search, params[:zipcode_search], class: "input", maxlength: 11, placeholder: "Busque pelo CEP") %>
               </div>
             </div>
             <div class="column">
              <div class="field">
                 <%= label_tag(:city_search, "Cidade") %>
-                <%= text_field_tag(:city_search, params[:city_search], class: "input", maxlength: 15, placeholder: "Digite o CNS") %>
+                <%= text_field_tag(:city_search, params[:city_search], class: "input", maxlength: 15, placeholder: "Busque pela cidade") %>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
 
 <% if @municipes.count > 0 %>
 
-    <section class="hero is-small">
+     <section class="hero is-small">
       <div class="hero-body">
         <p class="title">
           Municipes cadastrados <div style="color: green"><%= notice %></div>
@@ -95,6 +95,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= will_paginate @municipes %>
           </div>
       </div>  
     </div>

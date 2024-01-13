@@ -39,7 +39,10 @@ class MunicipesController < ApplicationController
       end
     else
       @municipes = Municipe.all
-    end  
+    end
+    
+    @municipes = @municipes.paginate(page: params[:page], per_page: 10)
+    
   end
 
   # GET /municipes/1 or /municipes/1.json

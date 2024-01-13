@@ -17,6 +17,8 @@ Pontos que estou ciente mas não aprofundarei por conta do teste:
 - Campos de busca na tela de listagem do municipe foram alguns para verificar o teste. Não coloquei todos disponível;
 - Foto quando é feito o upload eu mostro outra com um tamanho diferente, sinalizando que consigo tratar diferentes tamanhos;
 - Quanto aos testes usei o rspec que é o mais conhecido, mas fiz poucos testes, apenas para mostrar que sei mexer;
+- Outro ponto importante era colocar uma criptografia na URL, assim ninguém fica cheretando o que não deve... :)
+
 
 Automação:
 - Utilizei AWS com EC2 (como teste coloquei o aplicativo e o banco de dados no mesmo server)
