@@ -18,6 +18,9 @@ Pontos que estou ciente mas não aprofundarei por conta do teste:
 - Foto quando é feito o upload eu mostro outra com um tamanho diferente, sinalizando que consigo tratar diferentes tamanhos;
 - Quanto aos testes usei o rspec que é o mais conhecido, mas fiz poucos testes, apenas para mostrar que sei mexer;
 - Outro ponto importante era colocar uma criptografia na URL, assim ninguém fica cheretando o que não deve... :)
+- deixei as rotas abertas (caso digite um endereço inválido) no ambiente de produção caso queiram consultar;
+- no front poderia ter colocado mascaras nos campos CPF, CEP;
+- a busca de endereço poderia sim ter feito através de uma busca do cep (tem gem para isto);
 
 
 Automação:
