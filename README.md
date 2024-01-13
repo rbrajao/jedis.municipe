@@ -9,9 +9,19 @@ ruby 3.2.2
 Rails 7.0.8
 Postegre@14
 Link de produção para acesso:
-Condições impostas:
 
-Teste:
+Pontos que estou ciente mas não aprofundarei por conta do teste:
+- Contratação do twillio para envio dos SMS;
+- Contratação do sendgrid para envio dos emails;
+- Campos de busca na tela de listagem do municipe foram alguns para verificar o teste. Não coloquei todos disponível;
+- Foto quando é feito o upload eu mostro outra com um tamanho diferente, sinalizando que consigo tratar diferentes tamanhos;
+
+Automação:
+- Utilizei a Amazon Elastic BeanstalkWS para gerar a aplicação de produção;
+- Uma vez feito um push na MAIN o ambiente de produção é atualizado;
+
+
+Condições impostas do teste:
 
 Introdução (Backend): Iremos fazer uma grande atualização e mudanças no nosso código. Por isso, é imprescindível que você saiba Ruby e Rails. Algumas apps nossas são legadas, monolíticas, mesmo no backend você irá precisar lidar com um pouco com frontend (mas fica tranquilo, te ajudamos nisso). Tempo é fundamental para nós, porém, vamos focar na qualidade do seu trabalho, por isso, leve o tempo que achar necessário. Desafio: Crie um CRUD de municipes (Exceto deletar). O munícipe tem status ativo e inativo. Idealmente, só precisa ser 2 páginas: Listagem de CRUD (com opções para navegar), e o cadastro em si. 2 páginas é apenas uma sugestão, você é livre para montar o UI/UX da forma que achar melhor. Ter uma entidade relacionada chamada Munícipe. Essa entidade cadastrar cidadãos (pessoas) dentro de um município. As seguintes regras devem ser seguidas:
 
