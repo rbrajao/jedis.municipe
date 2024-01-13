@@ -103,12 +103,13 @@
           <%= form.file_field :photo, class: "input is-normal is-primary" %><br>
           <br>
           <strong>Foto:</strong><br>
-            <% if @municipe.photo.attached? %>
-              <%= image_tag @municipe.photo, class: "photo-preview" %>
-              <%= image_tag @municipe.photo.variant(resize_to_limit: [100, 100]), class: "photo-preview, is-rounded" %>
-            <% else %>
-              Sem foto disponível.
-            <% end %>
+          <% if @municipe.photo.attached? %>
+            <%= image_tag @municipe.photo.variant(resize_to_limit: [400, 400]), class: "photo-preview", alt: "Foto do Municipe" %>
+            <%= image_tag @municipe.photo.variant(resize_to_limit: [300, 300]), class: "photo-preview", alt: "Foto do Municipe" %>
+            <%= image_tag @municipe.photo.variant(resize_to_limit: [100, 100]), class: "photo-preview", alt: "Foto do Municipe" %>
+          <% else %>
+            Sem foto disponível.
+          <% end %>
         </div>
       </div>
       <div class="columns is-centered">

@@ -6,7 +6,7 @@ Versões utilizadas:
 - ruby 3.2.2
 - Rails 7.0.8
 - Postegre@14.10
-- bulma 0.9.4 (padrão de css responsivo)
+- bulma 0.9.4 (Para css responsivo - bulma.io).  Tem o https://bulma.dev/ (não usei no projeto) que auxilia muito no front - custo Us$24/month
 
 
 Link de produção para acesso:
